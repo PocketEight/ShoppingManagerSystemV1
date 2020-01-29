@@ -1,6 +1,7 @@
 package pzf.entity;
 
 public class Goods {
+    int id;
     String goodsName;
     float goodsPrice;
     int goodsNum;
@@ -9,6 +10,22 @@ public class Goods {
         this.goodsName = goodsName;
         this.goodsPrice = goodsPrice;
         this.goodsNum = goodsNum;
+    }
+
+    public Goods(int id, String goodsName) {
+        this.id = id;
+        this.goodsName = goodsName;
+    }
+
+    public Goods(String goodsName) {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getGoodsName() {

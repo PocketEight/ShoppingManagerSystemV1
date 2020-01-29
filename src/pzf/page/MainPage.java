@@ -78,6 +78,10 @@ public class MainPage {
                         GoodsPage.addGoodsPage();
                         break;
                     }
+                    case (2):{
+                        GoodsPage.updateGoods();
+                        break;
+                    }
                 }
             }
             else{
