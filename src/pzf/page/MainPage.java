@@ -3,7 +3,6 @@ package pzf.page;
 import pzf.tools.ScannerJudge;
 
 
-
 public class MainPage {
     /*
      * 入口函数
@@ -11,6 +10,7 @@ public class MainPage {
     public static void main(String[] args) {
         mainPage();
     }
+
     /*
      *主界面
      */
@@ -22,7 +22,7 @@ public class MainPage {
         System.out.println("*************************\n");
         System.out.println("输入数字选择，按0退出");
         do {
-            int info= ScannerJudge.scannerJudge();
+            int info = ScannerJudge.scannerJudge();
             if (info >= 0 && info <= 3) {
                 switch (info) {
                     case (0): {
@@ -44,15 +44,15 @@ public class MainPage {
                         break;
                     }
                 }
-            }
-            else{
+            } else {
                 System.err.println("!输入有误!");
                 System.out.println("重新选择或者按0退出.");
             }
         }
-            while (true) ;
+        while (true);
     }
-    public static void maintensePage(){
+
+    public static void maintensePage() {
         /**
          * 商品维护界面
          */
@@ -66,25 +66,33 @@ public class MainPage {
         System.out.println("\t5.查找商品\n");
         System.out.println("*************************\n");
         System.out.println("输入数字或者按0返回上级菜单");
-        do{
-            int info=ScannerJudge.scannerJudge();
-            if(info>=0&&info<=5){
-                switch (info){
-                    case (0):{
+        do {
+            int info = ScannerJudge.scannerJudge();
+            if (info >= 0 && info <= 5) {
+                switch (info) {
+                    case (0): {
                         mainPage();
                         break;
                     }
-                    case(1):{
+                    case (1): {
                         GoodsPage.addGoodsPage();
                         break;
                     }
-                    case (2):{
+                    case (2): {
                         GoodsPage.updateGoods();
                         break;
                     }
+                    case (3):
+                        GoodsPage.deleteGoods();
+                        break;
+                    case (4):
+                        GoodsPage.selectAll();
+                        break;
+                    case (5):
+                        GoodsPage.selectSort();
+                        break;
                 }
-            }
-            else{
+            } else {
                 System.err.println("!输入有误!");
                 System.out.println("重新选择或者按0退出.");
             }
@@ -92,7 +100,7 @@ public class MainPage {
         while (true);
     }
 
-    public static void mainLoginPage(){
+    public static void mainLoginPage() {
         /**
          * 前台登录收银
          */
@@ -100,18 +108,17 @@ public class MainPage {
         System.out.println("\t1.登录系统\n");
         System.out.println("\t2.退出\n");
         System.out.println("*************************\n");
-        do{
-            int info=ScannerJudge.scannerJudge();
-            if(info>=0&&info<=2){
-                switch (info){
+        do {
+            int info = ScannerJudge.scannerJudge();
+            if (info >= 0 && info <= 2) {
+                switch (info) {
                     case (0):
                     case (2): {
                         mainPage();
                         break;
                     }
                 }
-            }
-            else{
+            } else {
                 System.err.println("!输入有误!");
                 System.out.println("重新选择或者按0退出.");
             }
@@ -119,7 +126,7 @@ public class MainPage {
         while (true);
     }
 
-    public static void goodsManagePage(){
+    public static void goodsManagePage() {
         /**
          * 商品管理页面
          */
@@ -130,23 +137,22 @@ public class MainPage {
         System.out.println("*************************\n");
         System.out.println("输入数字或者按0返回上级菜单");
         do {
-            int info=ScannerJudge.scannerJudge();
-            if(info>=0&&info<=2){
-                switch (info){
-                    case (0):{
+            int info = ScannerJudge.scannerJudge();
+            if (info >= 0 && info <= 2) {
+                switch (info) {
+                    case (0): {
                         mainPage();
                         break;
                     }
-                    case(1):{
+                    case (1): {
 
                     }
-                    case (2):{
+                    case (2): {
                         salemansManagePage();
                         break;
                     }
                 }
-            }
-            else{
+            } else {
                 System.err.println("!输入有误!");
                 System.out.println("重新选择或者按0退出.");
             }
@@ -154,7 +160,7 @@ public class MainPage {
         while (true);
     }
 
-    public static void salemansManagePage(){
+    public static void salemansManagePage() {
         /**
          * 售货员管理页面
          */
@@ -167,18 +173,17 @@ public class MainPage {
         System.out.println("\t5.查询售货员\n");
         System.out.println("*************************\n");
         System.out.println("输入数字或者按0返回上级菜单");
-        do{
-            int info=ScannerJudge.scannerJudge();
-            if(info>=0&&info<=5){
-                switch (info){
-                    case (0):{
+        do {
+            int info = ScannerJudge.scannerJudge();
+            if (info >= 0 && info <= 5) {
+                switch (info) {
+                    case (0): {
                         goodsManagePage();
                         break;
                     }
 
                 }
-            }
-            else{
+            } else {
                 System.err.println("!输入有误!");
                 System.out.println("重新选择或者按0退出.");
             }

@@ -6,6 +6,9 @@ public class Goods {
     float goodsPrice;
     int goodsNum;
 
+    public Goods(){
+
+    }
     public Goods(String goodsName, float goodsPrice, int goodsNum) {
         this.goodsName = goodsName;
         this.goodsPrice = goodsPrice;

@@ -6,7 +6,8 @@ import pzf.tools.ScannerChoice;
 import pzf.tools.ScannerJudge;
 import pzf.tools.ScannerNum;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 货物管理页面
@@ -61,12 +62,24 @@ public class GoodsPage {
                         String goodsName = ScannerChoice.ScannerInfoString();
                         goods.setGoodsName(goodsName);
                         GoodsDao.update(info, goods);
-                        System.out.println("更改成功");
-                        System.out.println("N");
+                        System.out.println("更改成功，返回上一页");
+                        MainPage.maintensePage();
                         break;
                     case (2):
+                        System.out.println("请输出更改后价格：");
+                        Float goodsPrice = ScannerNum.ScannerInfoFloat();
+                        goods.setGoodsPrice(goodsPrice);
+                        GoodsDao.update(info, goods);
+                        System.out.println("更改成功，返回上一页");
+                        MainPage.maintensePage();
                         break;
                     case (3):
+                        System.out.println("请输出更改后数量：");
+                        int goodsNum = ScannerNum.ScannerInfoInt();
+                        goods.setGoodsNum(goodsNum);
+                        GoodsDao.update(info, goods);
+                        System.out.println("更改成功，返回上一页");
+                        MainPage.maintensePage();
                         break;
                 }
                 break;
@@ -78,4 +91,63 @@ public class GoodsPage {
         }
 
     }
+
+    /**
+     * 删除页面
+     */
+    public static void deleteGoods() {
+        System.out.println("输入删除商品名称");
+        String goodsName = ScannerChoice.ScannerInfoString();
+        Goods goods = GoodsDao.get(goodsName);
+        System.out.println("是否确定删除 y/n");
+        String check = ScannerChoice.ScannerInfoString();
+        if (check.equals("y")) {
+            GoodsDao.delete(goods.getId());
+            System.out.println("删除成功，返回上一页\n");
+        }
+        MainPage.maintensePage();
+    }
+
+    /**
+     * 查询所有
+     */
+    public static void selectAll() {
+
+        List<Goods> list = GoodsDao.selectAll();
+        String check = "";
+        System.out.println("商品名称\t\t商品价格\t\t商品数量\t\t备注");
+        for (Goods goods : list
+        ) {
+            if (goods.getGoodsNum() <= 10) check = "*该商品不足10";
+            System.out.println(goods.getGoodsName() + "\t\t" + goods.getGoodsPrice() + "\t\t" + goods.getGoodsNum() + "\t\t" + check + "\n");
+            check = "";
+        }
+        System.out.println("0返回");
+        int back = ScannerJudge.scannerJudge();
+        if (back == 0) MainPage.maintensePage();
+    }
+
+    public static void selectSort(){
+        System.out.println("执行查询商品操作\n\n");
+        System.out.println("1.按商品数量升序查询\n2.按商品价格升序查询\n3.输入关键字查询商品\n输入数字或按0返回上一级菜单");
+        int key=ScannerJudge.scannerJudge();
+        if(key>=0&&key<=3){
+            ArrayList<Goods> list=GoodsDao.selectSort(key);
+            String check = "";
+            System.out.println("商品名称\t\t商品价格\t\t商品数量\t\t备注");
+            for (Goods goods : list
+            ) {
+                if (goods.getGoodsNum() <= 10) check = "*该商品不足10";
+                System.out.println(goods.getGoodsName() + "\t\t" + goods.getGoodsPrice() + "\t\t" + goods.getGoodsNum() + "\t\t" + check + "\n");
+                check = "";
+            }
+            System.out.println("按0返回");
+            int backKey=ScannerJudge.scannerJudge();
+            if(backKey==0) GoodsPage.selectSort();
+        }else{
+            System.out.println("请重新输入");
+            selectSort();
+        }
+    }
 }
+
