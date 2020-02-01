@@ -117,6 +117,7 @@ public class MainPage {
                         mainPage();
                         break;
                     }
+                    case (1):SalesPage.loginPage();
                 }
             } else {
                 System.err.println("!输入有误!");
